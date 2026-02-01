@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study Template - Dokumentasjon</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="css/academic.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav>
+      <a href="/" class="back-link">← Hjem</a>
+      <a href="/academic" class="portfolio-link">Academic</a>
+    </nav>
+  </header>
+
+  <main class="case-study">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="meta-badges">
+          <span class="badge">Template</span>
+          <span class="badge">Dokumentasjon</span>
+        </div>
+        <h1>Case Study Template</h1>
+        <h2>Hvordan porteføljesidene er bygget</h2>
+        <p class="subtitle">Dokumentasjon og struktur for langt-form case study sider</p>
+      </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview" id="overview">
+      <div class="summary">
+        <h3>Om denne malen</h3>
+        <p>Dette er en dokumentasjonsside som forklarer hvordan case study-sidene i porteføljen er bygget. Den tjener også som en midlertidig placeholder til neste prosjekt (CORPUS) er ferdig implementert.</p>
+
+        <p>Hver case study følger en narrativ struktur som viser forskningsprosessen, metodikken, og resultatet på en tilgjengelig måte.</p>
+      </div>
+
+      <div class="details-box">
+        <h3>Teknisk informasjon</h3>
+        <dl>
+          <dt>Teknologi:</dt>
+          <dd>HTML5, CSS3, Vanilla JavaScript</dd>
+
+          <dt>Stil:</dt>
+          <dd>Minimal og ren, typografi-fokusert</dd>
+
+          <dt>Responsive:</dt>
+          <dd>Fungerer på desktop, tablet, og mobil</dd>
+
+          <dt>Filer:</dt>
+          <dd>portfolio.css (delt styling), individuelle HTML-filer per prosjekt</dd>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Structure Section -->
+    <section id="structure">
+      <h2>Sidestruktur</h2>
+
+      <h3>1. Hero-seksjon</h3>
+      <p>Toppen av siden inneholder:</p>
+      <ul>
+        <li><strong>Meta-badges:</strong> Små merker som viser år, prosjekttype, og institusjon</li>
+        <li><strong>H1 tittel:</strong> Hovedtittel på prosjektet</li>
+        <li><strong>H2 undertittel:</strong> Beskrivende undertittel på norsk</li>
+        <li><strong>Subtitle:</strong> Engelsk oversettelse eller utdypning</li>
+      </ul>
+
+      <div class="highlight-box">
+        <h4>Eksempel fra Masteroppgave:</h4>
+        <ul>
+          <li>Badges: "2019", "Masteroppgave", "UiO"</li>
+          <li>H1: "Facilitating for Capabilities"</li>
+          <li>H2: "Myndiggjøring av personer med utviklingshemming..."</li>
+        </ul>
+      </div>
+
+      <h3>2. Oversikt-seksjon</h3>
+      <p>To-kolonnes layout (på desktop) med:</p>
+      <ul>
+        <li><strong>Sammendrag (venstre):</strong> 2-3 avsnitt som beskriver prosjektet overordnet</li>
+        <li><strong>Detaljboks (høyre):</strong> Strukturert informasjon i definition list-format
+          <ul>
+            <li>Tidslinje</li>
+            <li>Min rolle</li>
+            <li>Samarbeidspartnere</li>
+            <li>Metoder</li>
+            <li>Relevante lenker</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>3. Hovedinnhold</h3>
+      <p>Narrativ-seksjonene følger en logisk flyt:</p>
+      <ul>
+        <li><strong>Utfordringen:</strong> Kontekst, problemområde, interessenter</li>
+        <li><strong>Forskningsprosess:</strong> Metoder, tilnærming, etiske hensyn</li>
+        <li><strong>Prosess:</strong> Nøkkelaktiviteter, iterasjoner, deltakelse</li>
+        <li><strong>Funn/Resultater:</strong> Hva kom ut av det, impact, publikasjoner</li>
+        <li><strong>Refleksjoner:</strong> Læring, hva ville du gjort annerledes</li>
+      </ul>
+
+      <h3>4. Navigasjon</h3>
+      <p>Bunnen av siden har:</p>
+      <ul>
+        <li>Lenke tilbake til porteføljeoversikten</li>
+        <li>Lenke til neste prosjekt (eller disabled hvis siste)</li>
+      </ul>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+      <h2>Interaktive funksjoner</h2>
+
+      <h3>Definition Tooltips</h3>
+      <p>Fagtermer er markert med en prikket rød understrek. Når du <span class="term" data-tooltip="Dette er et eksempel på en definition tooltip. De vises når du holder musepekeren over et ord, eller trykker på mobil.">holder musepekeren over dem</span> (desktop) eller trykker på dem (mobil), vises en kort forklaring.</p>
+
+      <div class="finding">
+        <h4>Implementasjon</h4>
+        <p>Tooltips er implementert med en JavaScript-klasse som:</p>
+        <ul>
+          <li>Detekterer om enheten er touch-basert eller ikke</li>
+          <li>Viser tooltip ved hover (desktop) eller tap (mobil)</li>
+          <li>Posisjonerer tooltip automatisk innenfor viewport</li>
+          <li>Lukker tooltip når du klikker utenfor (mobil)</li>
+        </ul>
+      </div>
+
+      <h3>Progress Navigation</h3>
+      <p>En scrollbar til venstre for innholdet viser:</p>
+      <ul>
+        <li><strong>Vertikal linje:</strong> Representerer hele sidens lengde</li>
+        <li><strong>Rød indikator:</strong> Viser nåværende scroll-posisjon</li>
+        <li><strong>Seksjonslenker:</strong> Klikkbare lenker til hoveddeler av siden</li>
+        <li><strong>Aktiv seksjon:</strong> Fremhevet i rødt når du scroller</li>
+      </ul>
+
+      <div class="insight-box">
+        <h4>Visuell feedback</h4>
+        <p>Progress navigasjonen vises først etter at du scroller forbi hero-seksjonen. Alle elementer er 60% transparente for å ikke distrahere fra innholdet.</p>
+      </div>
+
+      <h3>Responsivt design</h3>
+      <p>Siden tilpasser seg automatisk til skjermstørrelse:</p>
+      <ul>
+        <li><strong>Desktop (>900px):</strong> Full progress nav med tekst</li>
+        <li><strong>Mobil (≤900px):</strong> Kompakt nav med horisontale streker istedenfor tekst</li>
+        <li><strong>Tablet:</strong> Gradvis skalering av tekststørrelser</li>
+      </ul>
+    </section>
+
+    <!-- Styling Section -->
+    <section id="styling">
+      <h2>Visuell stil</h2>
+
+      <h3>Fargepalett</h3>
+      <div class="details-box">
+        <dl>
+          <dt>Primary:</dt>
+          <dd>#0a0a0a (svart tekst)</dd>
+
+          <dt>Secondary:</dt>
+          <dd>#666 (grå tekst)</dd>
+
+          <dt>Accent:</dt>
+          <dd>#dc2626 (rød for fremheving)</dd>
+
+          <dt>Background:</dt>
+          <dd>#ffffff (hvit) / #f9fafb (alternativ)</dd>
+
+          <dt>Border:</dt>
+          <dd>#e5e5e5 (lys grå)</dd>
+        </dl>
+      </div>
+
+      <h3>Typografi</h3>
+      <p>Systemfonter brukes for rask lasting og lesbarhet:</p>
+      <ul>
+        <li>Font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', etc.</li>
+        <li>Base font-size: 1.05rem (lett større enn standard)</li>
+        <li>Line-height: 1.7 (god lesbarhet)</li>
+        <li>Antialiasing aktivert for jevnere tekst</li>
+      </ul>
+
+      <h3>Komponenter</h3>
+      <p>Flere gjenbrukbare komponenter er tilgjengelige:</p>
+
+      <div class="finding">
+        <h4>.finding - Funnboks</h4>
+        <p>Grå bakgrunn med rød tittel. Brukes til å fremheve viktige forskningsfunn eller innsikter.</p>
+      </div>
+
+      <div class="highlight-box">
+        <h4>.highlight-box - Fremhevingsboks</h4>
+        <ul>
+          <li>Gul bakgrunn med oransje venstre-border</li>
+          <li>Brukes til viktige punkter eller lister</li>
+        </ul>
+      </div>
+
+      <div class="insight-box">
+        <h4>.insight-box - Innsiktboks</h4>
+        <p>Som highlight-box, men for enkeltavsnitt eller korte innsikter.</p>
+      </div>
+
+      <div class="publication-box">
+        <p><strong>.publication-box - Publikasjonsboks</strong></p>
+        <p>Grønn bakgrunn. Brukes til å fremheve publikasjoner, priser, eller eksterne anerkjennelser.</p>
+      </div>
+
+      <div class="research-question">
+        <h4>Forskningsspørsmål</h4>
+        <blockquote>
+          .research-question brukes til å fremheve hovedforskningsspørsmålet. Grå bakgrunn med rød venstre-border.
+        </blockquote>
+      </div>
+
+      <div class="pullquote">
+        <p>"Pullquote brukes til viktige sitater eller statement som fortjener ekstra oppmerksomhet."</p>
+      </div>
+    </section>
+
+    <!-- Technical Section -->
+    <section id="technical">
+      <h2>Teknisk implementasjon</h2>
+
+      <h3>Filstruktur</h3>
+      <p>Porteføljedelen er organisert som følger:</p>
+      <pre style="background: var(--color-gray-100); padding: 1rem; border-radius: 6px; overflow-x: auto; font-size: 0.9rem;">
+portfolio-website/
+├── server.js
+├── package.json
+└── public/
+    ├── index.html
+    ├── css/
+    │   └── main.css
+    ├── pasientjournal/
+    │   ├── index.html
+    │   ├── css/
+    │   │   └── pasientjournal.css
+    │   └── js/
+    │       ├── TooltipManager.js
+    │       └── app.js
+    └── portfolio/
+        ├── masteroppgave.html
+        ├── template.html
+        ├── css/
+        │   └── portfolio.css
+        └── js/
+            ├── DefinitionTooltips.js
+            ├── ProgressNavigation.js
+            └── main.js
+      </pre>
+
+      <h3>JavaScript-klasser</h3>
+
+      <h4>DefinitionTooltips</h4>
+      <p>Håndterer alle interaktive definition tooltips:</p>
+      <ul>
+        <li>Finner alle elementer med <code>.term</code> klassen</li>
+        <li>Leser tooltip-tekst fra <code>data-tooltip</code> attributt</li>
+        <li>Oppretter og posisjonerer tooltip-elementer dynamisk</li>
+        <li>Håndterer både hover og touch events</li>
+      </ul>
+
+      <h4>ProgressNavigation</h4>
+      <p>Styrer scroll tracking og navigasjon:</p>
+      <ul>
+        <li>Beregner scroll-prosent og oppdaterer rød indikator</li>
+        <li>Skjuler/viser navigation basert på scroll-posisjon</li>
+        <li>Fremhever aktiv seksjon basert på viewport</li>
+        <li>Smooth scroll til seksjoner ved klikk</li>
+      </ul>
+
+      <h3>Accessibility</h3>
+      <p>Sidene følger grunnleggende accessibility-prinsipper:</p>
+      <ul>
+        <li><strong>Semantisk HTML:</strong> Korrekt bruk av header, nav, main, section, article</li>
+        <li><strong>Keyboard navigasjon:</strong> Alle interaktive elementer kan nås med tastatur</li>
+        <li><strong>Farge-kontrast:</strong> Møter WCAG AA-standard</li>
+        <li><strong>Focus states:</strong> Synlige når du navigerer med tastatur</li>
+        <li><strong>Alt-tekst:</strong> Bør legges til alle bilder (kommer)</li>
+      </ul>
+    </section>
+
+    <!-- Next Steps Section -->
+    <section id="next-steps">
+      <h2>Neste steg</h2>
+
+      <h3>Planlagte case studies</h3>
+      <ol>
+        <li><strong>Masteroppgave (2019)</strong> - Ferdig implementert</li>
+        <li><strong>CORPUS (2020-2022)</strong> - Kommende
+          <ul>
+            <li>Helsedigitalisering og kapasitetsbygging</li>
+            <li>12 intervjuer med implementeringsledere</li>
+            <li>Innføring av digital hjemmetjeneste i Oslo</li>
+          </ul>
+        </li>
+        <li><strong>Doktorgradsarbeid</strong> - Kommende
+          <ul>
+            <li>Democratic Design Theory</li>
+            <li>Informasjonssystemer-perspektiv</li>
+            <li>Teoretisk utvikling (early-stage)</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h3>Forbedringer og justeringer</h3>
+      <ul>
+        <li>Legge til workshop-bilder og prosessdiagrammer</li>
+        <li>Revidere innhold for klarhet og nøyaktighet</li>
+        <li>Lage porteføljelanding-side (index.html)</li>
+        <li>Teste med eksterne brukere for feedback</li>
+        <li>Vurdere norsk vs. engelsk for bredere publikum</li>
+      </ul>
+
+      <h3>Bruke malen</h3>
+      <p>For å lage en ny case study-side:</p>
+      <ol>
+        <li>Kopier strukturen fra masteroppgave.html</li>
+        <li>Erstatt innhold med nytt prosjekt</li>
+        <li>Behold hero, overview, og navigasjonsstruktur</li>
+        <li>Legg til definition tooltips for fagtermer (<code>&lt;span class="term" data-tooltip="..."&gt;</code>)</li>
+        <li>Sett ID-er på hovednivå h2-seksjoner for progress nav</li>
+        <li>Test responsivt design på ulike enheter</li>
+        <li>Oppdater navigasjonslenker mellom prosjekter</li>
+      </ol>
+    </section>
+
+    <!-- Navigation -->
+    <section class="case-nav">
+      <a href="masteroppgave.html" class="btn-secondary">← Forrige prosjekt</a>
+      <a href="/" class="btn-secondary">Hjem</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Åsmund Dæhlen | <a href="mailto:daehlen1@gmail.com">daehlen1@gmail.com</a></p>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

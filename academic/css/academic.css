@@ -1,0 +1,576 @@
+/* Portfolio Styles - Minimal & Clean */
+/* Extends global.css */
+
+:root {
+  /* Page-specific overrides using global naming */
+  --pf-primary: var(--color-black);
+  --pf-secondary: var(--color-gray-500);
+  --pf-accent: var(--color-accent);
+  --pf-bg: var(--color-white);
+  --pf-bg-alt: var(--color-gray-100);
+  --pf-border: var(--color-gray-200);
+}
+
+body {
+  line-height: 1.7;
+}
+
+/* Header overrides */
+.site-header {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.portfolio-link {
+  color: var(--color-gray-500);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  transition: color var(--transition-base);
+}
+
+.portfolio-link:hover {
+  color: var(--color-accent);
+}
+
+/* Main Content */
+.case-study {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--color-gray-200);
+  margin-bottom: 3rem;
+}
+
+.meta-badges {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--color-gray-100);
+  color: var(--color-gray-500);
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid var(--color-gray-200);
+}
+
+.hero h1 {
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  color: var(--color-black);
+}
+
+.hero h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-gray-500);
+  margin-bottom: 0.5rem;
+}
+
+.hero .subtitle {
+  font-size: 1rem;
+  color: var(--color-gray-500);
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+/* Overview Section */
+.overview {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.summary h3,
+.details-box h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--color-black);
+  font-weight: 600;
+}
+
+.summary p {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.details-box {
+  background: var(--color-gray-100);
+  padding: 1.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-gray-200);
+}
+
+.details-box dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem 1.5rem;
+}
+
+.details-box dt {
+  font-weight: 600;
+  color: var(--color-gray-500);
+  font-size: 0.9rem;
+}
+
+.details-box dd {
+  color: var(--color-black);
+}
+
+/* Section Headings */
+h2 {
+  font-size: 2rem;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-black);
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--color-accent);
+}
+
+h3 {
+  font-size: 1.4rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-black);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.15rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-black);
+  font-weight: 600;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+/* Lists */
+ul, ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  line-height: 1.75;
+}
+
+li strong {
+  color: var(--color-black);
+}
+
+/* Blockquote / Research Question */
+.research-question {
+  background: var(--color-gray-100);
+  padding: 1.75rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--color-accent);
+  margin: 2rem 0;
+}
+
+.research-question h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-gray-500);
+}
+
+blockquote {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--color-black);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Highlight Boxes */
+.highlight-box,
+.insight-box {
+  background: #fef3c7;
+  border-left: 4px solid #f59e0b;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.highlight-box h4,
+.insight-box h4 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #92400e;
+}
+
+.highlight-box ul {
+  margin-left: 1.25rem;
+  margin-bottom: 0;
+}
+
+.insight-box p {
+  margin-bottom: 0;
+  color: #78350f;
+  font-weight: 500;
+}
+
+/* Findings */
+.finding {
+  background: var(--color-gray-100);
+  padding: 1.75rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--color-gray-200);
+}
+
+.finding h4 {
+  margin-top: 0;
+  color: var(--color-accent);
+}
+
+.finding p {
+  margin-bottom: 0.75rem;
+}
+
+.finding p:last-child {
+  margin-bottom: 0;
+}
+
+/* Publication Box */
+.publication-box {
+  background: #ecfdf5;
+  border-left: 4px solid #10b981;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.publication-box p {
+  margin-bottom: 0.75rem;
+}
+
+.publication-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* Pullquote */
+.pullquote {
+  margin: 3rem 0;
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid var(--color-gray-200);
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.pullquote p {
+  font-size: 1.35rem;
+  line-height: 1.6;
+  color: var(--color-accent);
+  font-style: italic;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Navigation */
+.case-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-gray-100);
+  color: var(--color-black);
+  text-decoration: none;
+  border-radius: 6px;
+  border: 1px solid var(--color-gray-200);
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+.btn-secondary.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Footer override */
+.site-footer {
+  margin-top: var(--spacing-3xl);
+}
+
+/* Definition Tooltips */
+.term {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  cursor: help;
+  transition: all 0.2s;
+}
+
+.term:hover {
+  text-decoration-style: solid;
+  text-decoration-thickness: 2px;
+}
+
+.definition-tooltip {
+  position: absolute;
+  background: var(--color-black);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  max-width: 320px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.definition-tooltip.show {
+  opacity: 1;
+}
+
+.definition-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid var(--color-black);
+}
+
+/* Progress Navigation */
+.progress-nav {
+  position: fixed;
+  left: calc(50% - 400px - 30px);
+  top: 100px;
+  bottom: 100px;
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.progress-nav.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.progress-bar {
+  position: relative;
+  width: 2px;
+  height: 100%;
+  background: var(--color-gray-200);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+.progress-indicator {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 34px;
+  background: var(--color-accent);
+  opacity: 0.6;
+  border-radius: 2px;
+  margin-left: 0;
+  transition: top 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.progress-sections {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 15px;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.progress-sections li {
+  margin: 0;
+}
+
+.progress-sections a {
+  color: var(--color-gray-500);
+  text-decoration: none;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
+  display: block;
+  text-align: right;
+  padding: 0.5rem 0.75rem;
+  margin: -0.5rem -0.75rem;
+  border-radius: 4px;
+  opacity: 0.6;
+}
+
+.progress-sections a:hover,
+.progress-sections a.active {
+  color: var(--color-accent);
+  font-weight: 600;
+  background: rgba(220, 38, 38, 0.05);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .progress-sections a {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .progress-sections a {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Switch to mobile progress nav - horizontal bars instead of text */
+  .progress-sections a {
+    font-size: 0;
+    width: 17px;
+    height: 3px;
+    background: var(--color-gray-200);
+    border-radius: 1.5px;
+    padding: 0.75rem;
+    margin: -0.75rem;
+  }
+
+  .progress-sections a.active {
+    background: var(--color-accent);
+    opacity: 0.6;
+  }
+
+  .progress-sections a:hover {
+    background: var(--color-accent);
+    opacity: 0.6;
+  }
+
+  .progress-sections {
+    right: 10px;
+  }
+
+  .progress-nav {
+    left: 0.5rem;
+    top: 80px;
+    bottom: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .case-study {
+    padding: 0 1.5rem 3rem;
+  }
+
+  .hero {
+    padding: 3rem 0 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero h2 {
+    font-size: 1.25rem;
+  }
+
+  h2 {
+    font-size: 1.65rem;
+    margin-top: 3rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  .overview {
+    grid-template-columns: 1fr;
+  }
+
+  .details-box dl {
+    grid-template-columns: 1fr;
+    gap: 0.25rem 0;
+  }
+
+  .details-box dd {
+    margin-bottom: 1rem;
+  }
+
+  .case-nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Adjust definition tooltips for mobile */
+  .definition-tooltip {
+    max-width: 280px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .site-header,
+  .case-nav,
+  .site-footer {
+    display: none;
+  }
+
+  .case-study {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .hero {
+    page-break-after: avoid;
+  }
+
+  h2, h3, h4 {
+    page-break-after: avoid;
+  }
+}

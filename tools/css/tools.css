@@ -1,0 +1,366 @@
+/**
+ * File Tree Visualizer Styles
+ * Dark theme with green/brown accents
+ * Extends global.css
+ */
+
+/* ================================
+   Page-specific Theme Overrides
+   ================================ */
+:root {
+  /* Dark theme colors */
+  --ft-bg-primary: #1a1a1a;
+  --ft-bg-secondary: #252525;
+  --ft-bg-input: #2d2d2d;
+  --ft-bg-hover: #333333;
+  --ft-text-primary: #e0e0e0;
+  --ft-text-secondary: #888888;
+  --ft-text-muted: #666666;
+  --ft-accent-green: #4ade80;
+  --ft-accent-green-hover: #22c55e;
+  --ft-accent-brown: #a3826a;
+  --ft-border: #3d3d3d;
+  --ft-border-hover: #4d4d4d;
+}
+
+/* Override body for dark theme */
+body {
+  background: var(--ft-bg-primary);
+  color: var(--ft-text-primary);
+  min-height: 100vh;
+}
+
+/* Override site header for dark theme */
+.site-header {
+  background: var(--ft-bg-secondary);
+  border-bottom-color: var(--ft-border);
+}
+
+.back-link {
+  color: var(--ft-text-secondary);
+}
+
+.back-link:hover {
+  color: var(--ft-accent-green);
+}
+
+/* Override site footer for dark theme */
+.site-footer {
+  background: transparent;
+  border-top-color: var(--ft-border);
+  color: var(--ft-text-muted);
+}
+
+.site-footer p {
+  color: var(--ft-text-muted);
+}
+
+.site-footer a {
+  color: var(--ft-accent-green);
+}
+
+/* ================================
+   Main Content
+   ================================ */
+.main-content {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-xl);
+}
+
+/* ================================
+   Hero Section
+   ================================ */
+.hero {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.hero h1 {
+  font-size: var(--font-size-4xl);
+  font-weight: 600;
+  color: var(--ft-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.hero p {
+  font-size: var(--font-size-lg);
+  color: var(--ft-text-secondary);
+}
+
+/* ================================
+   Toggle Switch
+   ================================ */
+.toggle-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.toggle-label {
+  font-size: var(--font-size-sm);
+  color: var(--ft-text-secondary);
+  transition: color var(--transition-base);
+}
+
+.toggle-label:first-child {
+  color: var(--ft-accent-green);
+}
+
+.toggle-container:has(input:checked) .toggle-label:first-child {
+  color: var(--ft-text-secondary);
+}
+
+.toggle-container:has(input:checked) .toggle-label:last-child {
+  color: var(--ft-accent-green);
+}
+
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--ft-bg-input);
+  border: 1px solid var(--ft-border);
+  border-radius: 26px;
+  transition: all var(--transition-slow);
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: var(--ft-accent-green);
+  border-radius: 50%;
+  transition: transform var(--transition-slow);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(24px);
+}
+
+.toggle-switch:hover .toggle-slider {
+  border-color: var(--ft-accent-brown);
+}
+
+/* ================================
+   Drop Zone
+   ================================ */
+.drop-zone {
+  border: 2px dashed var(--ft-border);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-2xl) var(--spacing-xl);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  background: var(--ft-bg-secondary);
+  margin-bottom: var(--spacing-xl);
+}
+
+.drop-zone:hover {
+  border-color: var(--ft-accent-brown);
+  background: var(--ft-bg-hover);
+}
+
+.drop-zone.drag-over {
+  border-color: var(--ft-accent-green);
+  background: rgba(74, 222, 128, 0.05);
+  border-style: solid;
+}
+
+.drop-zone-icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.7;
+}
+
+.drop-zone-text {
+  color: var(--ft-text-secondary);
+  font-size: var(--font-size-base);
+}
+
+.drop-zone-text strong {
+  color: var(--ft-text-primary);
+  display: block;
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-xs);
+}
+
+.drop-zone input[type="file"] {
+  display: none;
+}
+
+/* ================================
+   Output Section
+   ================================ */
+.output-section {
+  display: none;
+}
+
+.output-section.visible {
+  display: block;
+}
+
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.output-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.output-info {
+  color: var(--ft-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+/* ================================
+   Copy Button
+   ================================ */
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: var(--ft-accent-green);
+  color: var(--ft-bg-primary);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.copy-btn:hover {
+  background: var(--ft-accent-green-hover);
+}
+
+.copy-btn.copied {
+  background: var(--ft-accent-brown);
+}
+
+.copy-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ================================
+   Output Box
+   ================================ */
+.output-box {
+  background: var(--ft-bg-input);
+  border: 1px solid var(--ft-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  white-space: pre;
+  overflow-x: auto;
+  cursor: text;
+  min-height: 200px;
+  max-height: 500px;
+  overflow-y: auto;
+  transition: border-color var(--transition-base);
+}
+
+.output-box:hover {
+  border-color: var(--ft-border-hover);
+}
+
+.output-box:focus {
+  outline: none;
+  border-color: var(--ft-accent-green);
+}
+
+.output-box::selection {
+  background: rgba(74, 222, 128, 0.3);
+}
+
+.output-box.empty {
+  color: var(--ft-text-muted);
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================================
+   Scrollbar Styling
+   ================================ */
+.output-box::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.output-box::-webkit-scrollbar-track {
+  background: var(--ft-bg-secondary);
+  border-radius: var(--border-radius-sm);
+}
+
+.output-box::-webkit-scrollbar-thumb {
+  background: var(--ft-border);
+  border-radius: var(--border-radius-sm);
+}
+
+.output-box::-webkit-scrollbar-thumb:hover {
+  background: var(--ft-border-hover);
+}
+
+/* ================================
+   Responsive
+   ================================ */
+@media (max-width: 768px) {
+  .main-content {
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+
+  .hero h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .drop-zone {
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+
+  .output-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .output-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .output-box {
+    font-size: 0.8rem;
+    padding: var(--spacing-md);
+  }
+}

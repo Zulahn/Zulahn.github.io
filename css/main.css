@@ -1,0 +1,168 @@
+/* Main Landing Page Styles */
+/* Extends global.css */
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: linear-gradient(135deg, #1a365d 0%, #2d4a7c 100%);
+  min-height: 100vh;
+  color: #333;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header h1 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+header p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.welcome {
+  text-align: center;
+  color: white;
+  margin-bottom: 3rem;
+}
+
+.welcome h2 {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+
+.welcome p {
+  opacity: 0.8;
+  font-size: 1.1rem;
+}
+
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.app-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.app-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent-color, #1a365d);
+}
+
+.app-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--accent-color, #1a365d);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.app-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #1a365d;
+}
+
+.app-card p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.app-status {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+.status-dot.inactive {
+  background: #9ca3af;
+}
+
+.app-card.coming-soon {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.app-card.coming-soon .status-dot {
+  background: #f59e0b;
+}
+
+/* Section-specific colors */
+.app-card[data-app="academic"] {
+  --accent-color: #8b5cf6;
+}
+
+.app-card[data-app="tools"] {
+  --accent-color: #4ade80;
+}
+
+.app-card[data-app="creative"] {
+  --accent-color: #f472b6;
+}
+
+.app-card[data-app="lab"] {
+  --accent-color: #f59e0b;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+}
+
+footer a {
+  color: rgba(255, 255, 255, 0.7);
+}
