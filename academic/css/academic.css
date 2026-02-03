@@ -1,34 +1,38 @@
-/* Portfolio Styles - Minimal & Clean */
+/* Portfolio Styles - Minimal & Clean (Dark Mode) */
 /* Extends global.css */
 
 :root {
-  /* Page-specific overrides using global naming */
-  --pf-primary: var(--color-black);
-  --pf-secondary: var(--color-gray-500);
-  --pf-accent: var(--color-accent);
-  --pf-bg: var(--color-white);
-  --pf-bg-alt: var(--color-gray-100);
-  --pf-border: var(--color-gray-200);
+  /* Dark mode muted color system */
+  --pf-bg-base: #1a1a1a;
+  --pf-bg-elevated: #242424;
+  --pf-text-primary: #e8e8e8;
+  --pf-text-secondary: #a0a0a0;
+  --pf-border-subtle: #2f2f2f;
+  --pf-accent: #9b8bb8;
+  --pf-accent-muted: color-mix(in srgb, #9b8bb8 70%, transparent);
 }
 
 body {
   line-height: 1.7;
+  background: var(--pf-bg-base);
+  color: var(--pf-text-primary);
 }
 
 /* Header overrides */
 .site-header {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(26, 26, 26, 0.95);
+  border-bottom: 1px solid var(--pf-border-subtle);
 }
 
 .portfolio-link {
-  color: var(--color-gray-500);
+  color: var(--pf-text-secondary);
   text-decoration: none;
   font-size: var(--font-size-sm);
   transition: color var(--transition-base);
 }
 
 .portfolio-link:hover {
-  color: var(--color-accent);
+  color: var(--pf-accent);
 }
 
 /* Main Content */
@@ -42,7 +46,7 @@ body {
 .hero {
   text-align: center;
   padding: 4rem 0 3rem;
-  border-bottom: 1px solid var(--color-gray-200);
+  border-bottom: 1px solid var(--pf-border-subtle);
   margin-bottom: 3rem;
 }
 
@@ -55,13 +59,13 @@ body {
 
 .badge {
   display: inline-block;
-  background: var(--color-gray-100);
-  color: var(--color-gray-500);
+  background: var(--pf-bg-elevated);
+  color: var(--pf-text-secondary);
   padding: 0.35rem 0.85rem;
   border-radius: 6px;
   font-size: 0.85rem;
   font-weight: 500;
-  border: 1px solid var(--color-gray-200);
+  border: 1px solid var(--pf-border-subtle);
 }
 
 .hero h1 {
@@ -69,20 +73,20 @@ body {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 0.75rem;
-  color: var(--color-black);
+  color: var(--pf-text-primary);
 }
 
 .hero h2 {
   font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.4;
-  color: var(--color-gray-500);
+  color: var(--pf-text-secondary);
   margin-bottom: 0.5rem;
 }
 
 .hero .subtitle {
   font-size: 1rem;
-  color: var(--color-gray-500);
+  color: var(--pf-text-secondary);
   font-style: italic;
   margin-top: 1rem;
 }
@@ -99,7 +103,7 @@ body {
 .details-box h3 {
   font-size: 1.25rem;
   margin-bottom: 1rem;
-  color: var(--color-black);
+  color: var(--pf-text-primary);
   font-weight: 600;
 }
 
@@ -110,10 +114,10 @@ body {
 }
 
 .details-box {
-  background: var(--color-gray-100);
+  background: var(--pf-bg-elevated);
   padding: 1.75rem;
   border-radius: 8px;
-  border: 1px solid var(--color-gray-200);
+  border: 1px solid var(--pf-border-subtle);
 }
 
 .details-box dl {
@@ -124,12 +128,12 @@ body {
 
 .details-box dt {
   font-weight: 600;
-  color: var(--color-gray-500);
+  color: var(--pf-text-secondary);
   font-size: 0.9rem;
 }
 
 .details-box dd {
-  color: var(--color-black);
+  color: var(--pf-text-primary);
 }
 
 /* Section Headings */
@@ -137,17 +141,17 @@ h2 {
   font-size: 2rem;
   margin-top: 4rem;
   margin-bottom: 1.5rem;
-  color: var(--color-black);
+  color: var(--pf-text-primary);
   font-weight: 700;
   padding-bottom: 0.5rem;
-  border-bottom: 3px solid var(--color-accent);
+  border-bottom: 3px solid var(--pf-accent);
 }
 
 h3 {
   font-size: 1.4rem;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
-  color: var(--color-black);
+  color: var(--pf-text-primary);
   font-weight: 600;
 }
 
@@ -155,7 +159,7 @@ h4 {
   font-size: 1.15rem;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
-  color: var(--color-black);
+  color: var(--pf-text-primary);
   font-weight: 600;
 }
 
@@ -178,15 +182,15 @@ li {
 }
 
 li strong {
-  color: var(--color-black);
+  color: var(--pf-text-primary);
 }
 
 /* Blockquote / Research Question */
 .research-question {
-  background: var(--color-gray-100);
+  background: var(--pf-bg-elevated);
   padding: 1.75rem;
   border-radius: 8px;
-  border-left: 4px solid var(--color-accent);
+  border-left: 4px solid var(--pf-accent);
   margin: 2rem 0;
 }
 
@@ -196,22 +200,22 @@ li strong {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-gray-500);
+  color: var(--pf-text-secondary);
 }
 
 blockquote {
   font-size: 1.2rem;
   line-height: 1.6;
-  color: var(--color-black);
+  color: var(--pf-text-primary);
   font-style: italic;
   margin: 0;
 }
 
-/* Highlight Boxes */
+/* Highlight Boxes - Muted dark mode */
 .highlight-box,
 .insight-box {
-  background: #fef3c7;
-  border-left: 4px solid #f59e0b;
+  background: color-mix(in srgb, #f59e0b 12%, var(--pf-bg-elevated));
+  border-left: 4px solid color-mix(in srgb, #f59e0b 70%, transparent);
   padding: 1.5rem;
   border-radius: 8px;
   margin: 2rem 0;
@@ -221,7 +225,7 @@ blockquote {
 .insight-box h4 {
   margin-top: 0;
   margin-bottom: 0.75rem;
-  color: #92400e;
+  color: color-mix(in srgb, #f59e0b 90%, var(--pf-text-primary));
 }
 
 .highlight-box ul {
@@ -231,22 +235,22 @@ blockquote {
 
 .insight-box p {
   margin-bottom: 0;
-  color: #78350f;
+  color: var(--pf-text-primary);
   font-weight: 500;
 }
 
 /* Findings */
 .finding {
-  background: var(--color-gray-100);
+  background: var(--pf-bg-elevated);
   padding: 1.75rem;
   border-radius: 8px;
   margin-bottom: 1.5rem;
-  border: 1px solid var(--color-gray-200);
+  border: 1px solid var(--pf-border-subtle);
 }
 
 .finding h4 {
   margin-top: 0;
-  color: var(--color-accent);
+  color: var(--pf-accent);
 }
 
 .finding p {
@@ -257,10 +261,10 @@ blockquote {
   margin-bottom: 0;
 }
 
-/* Publication Box */
+/* Publication Box - Muted dark mode */
 .publication-box {
-  background: #ecfdf5;
-  border-left: 4px solid #10b981;
+  background: color-mix(in srgb, #10b981 12%, var(--pf-bg-elevated));
+  border-left: 4px solid color-mix(in srgb, #10b981 70%, transparent);
   padding: 1.5rem;
   border-radius: 8px;
   margin: 2rem 0;
@@ -268,6 +272,7 @@ blockquote {
 
 .publication-box p {
   margin-bottom: 0.75rem;
+  color: var(--pf-text-primary);
 }
 
 .publication-box p:last-child {
@@ -279,14 +284,14 @@ blockquote {
   margin: 3rem 0;
   padding: 2rem;
   text-align: center;
-  border-top: 1px solid var(--color-gray-200);
-  border-bottom: 1px solid var(--color-gray-200);
+  border-top: 1px solid var(--pf-border-subtle);
+  border-bottom: 1px solid var(--pf-border-subtle);
 }
 
 .pullquote p {
   font-size: 1.35rem;
   line-height: 1.6;
-  color: var(--color-accent);
+  color: var(--pf-accent);
   font-style: italic;
   font-weight: 500;
   margin: 0;
@@ -298,25 +303,25 @@ blockquote {
   justify-content: space-between;
   margin-top: 4rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--color-gray-200);
+  border-top: 1px solid var(--pf-border-subtle);
 }
 
 .btn-secondary {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background: var(--color-gray-100);
-  color: var(--color-black);
+  background: var(--pf-bg-elevated);
+  color: var(--pf-text-primary);
   text-decoration: none;
   border-radius: 6px;
-  border: 1px solid var(--color-gray-200);
+  border: 1px solid var(--pf-border-subtle);
   font-weight: 500;
   transition: all 0.2s;
 }
 
 .btn-secondary:hover {
-  background: var(--color-accent);
-  color: white;
-  border-color: var(--color-accent);
+  background: var(--pf-accent);
+  color: var(--pf-bg-base);
+  border-color: var(--pf-accent);
 }
 
 .btn-secondary.disabled {
@@ -331,7 +336,7 @@ blockquote {
 
 /* Definition Tooltips */
 .term {
-  color: var(--color-accent);
+  color: var(--pf-accent);
   text-decoration: underline;
   text-decoration-style: dotted;
   text-decoration-thickness: 1px;
@@ -347,15 +352,16 @@ blockquote {
 
 .definition-tooltip {
   position: absolute;
-  background: var(--color-black);
-  color: white;
+  background: var(--pf-bg-elevated);
+  color: var(--pf-text-primary);
   padding: 0.75rem 1rem;
   border-radius: 6px;
   font-size: 0.9rem;
   line-height: 1.5;
   max-width: 320px;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--pf-border-subtle);
   opacity: 0;
   transition: opacity 0.2s;
   pointer-events: none;
@@ -375,7 +381,7 @@ blockquote {
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-bottom: 6px solid var(--color-black);
+  border-bottom: 6px solid var(--pf-bg-elevated);
 }
 
 /* Progress Navigation */
@@ -399,7 +405,7 @@ blockquote {
   position: relative;
   width: 2px;
   height: 100%;
-  background: var(--color-gray-200);
+  background: var(--pf-border-subtle);
   border-radius: 2px;
   opacity: 0.6;
 }
@@ -410,12 +416,12 @@ blockquote {
   transform: translateX(-50%);
   width: 4px;
   height: 34px;
-  background: var(--color-accent);
-  opacity: 0.6;
+  background: var(--pf-accent);
+  opacity: 0.8;
   border-radius: 2px;
   margin-left: 0;
   transition: top 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .progress-sections {
@@ -436,7 +442,7 @@ blockquote {
 }
 
 .progress-sections a {
-  color: var(--color-gray-500);
+  color: var(--pf-text-secondary);
   text-decoration: none;
   font-size: 0.8rem;
   white-space: nowrap;
@@ -451,9 +457,10 @@ blockquote {
 
 .progress-sections a:hover,
 .progress-sections a.active {
-  color: var(--color-accent);
+  color: var(--pf-accent);
   font-weight: 600;
-  background: rgba(220, 38, 38, 0.05);
+  background: color-mix(in srgb, var(--pf-accent) 10%, transparent);
+  opacity: 1;
 }
 
 /* Responsive */
@@ -475,20 +482,20 @@ blockquote {
     font-size: 0;
     width: 17px;
     height: 3px;
-    background: var(--color-gray-200);
+    background: var(--pf-border-subtle);
     border-radius: 1.5px;
     padding: 0.75rem;
     margin: -0.75rem;
   }
 
   .progress-sections a.active {
-    background: var(--color-accent);
-    opacity: 0.6;
+    background: var(--pf-accent);
+    opacity: 0.8;
   }
 
   .progress-sections a:hover {
-    background: var(--color-accent);
-    opacity: 0.6;
+    background: var(--pf-accent);
+    opacity: 0.8;
   }
 
   .progress-sections {

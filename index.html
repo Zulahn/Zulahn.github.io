@@ -6,41 +6,87 @@
   <title>Åsmund Dæhlen</title>
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/main.css">
+  <script type="module" src="js/CardFlip.js"></script>
 </head>
 <body>
   <header>
-    <h1>Åsmund Dæhlen</h1>
-    <p>Design researcher, process leader, maker of things</p>
+    <div class="header-content">
+      <h1>Åsmund Dæhlen</h1>
+      <p>Jeg designer det du ikke ser, det som får teknologi, organisasjoner, og mennesker til å henge sammen</p>
+    </div>
   </header>
 
   <main>
-    <div class="welcome">
-      <h2>Velkommen</h2>
-      <p>Utforsk mitt arbeid og prosjekter</p>
-    </div>
+    <p class="portfolio-intro">
+      Utvalgte prosjekter som viser bredden – fra akademisk forskning til praktiske verktøy
+    </p>
 
     <div class="apps-grid">
-      <!-- Academic -->
-      <a href="/academic/masteroppgave.html" class="app-card" data-app="academic">
-        <div class="app-icon">📚</div>
-        <h3>Academic</h3>
-        <p>Casestudier fra tjenestedesign, forskning og brukersentrert utvikling.</p>
-        <div class="app-status">
-          <span class="status-dot"></span>
-          <span>Aktiv</span>
-        </div>
-      </a>
+      <!-- Academic - Multiple projects, flip interaction -->
+      <div class="app-card-container" data-app="academic" data-subprojects="multiple">
+        <div class="app-card-inner">
+          <!-- Front -->
+          <div class="app-card app-card-front" data-app="academic">
+            <div class="app-icon">📚</div>
+            <h3>Academic</h3>
+            <p>Casestudier fra tjenestedesign, forskning og brukersentrert utvikling.</p>
+            <div class="app-status">
+              <span class="status-dot"></span>
+              <span>2 prosjekter</span>
+            </div>
+          </div>
 
-      <!-- Tools -->
-      <a href="/tools" class="app-card" data-app="tools">
-        <div class="app-icon">🛠️</div>
-        <h3>Tools</h3>
-        <p>Nyttige verktøy jeg har bygget. File tree visualizer og mer.</p>
-        <div class="app-status">
-          <span class="status-dot"></span>
-          <span>Aktiv</span>
+          <!-- Back -->
+          <div class="app-card app-card-back" data-app="academic">
+            <h3>Academic Projects</h3>
+            <ul class="subproject-menu">
+              <li>
+                <a href="/academic/masteroppgave.html">
+                  <strong>Master Thesis</strong>
+                  <span>Participatory design and capabilities approach (2019)</span>
+                </a>
+              </li>
+              <li>
+                <a href="/academic/Stipendatur.html">
+                  <strong>Doctoral Research</strong>
+                  <span>Healthcare workers leading digital transformation (2020-2022)</span>
+                </a>
+              </li>
+            </ul>
+            <button class="flip-back">← Tilbake</button>
+          </div>
         </div>
-      </a>
+      </div>
+
+      <!-- Tools - Single project, flip interaction -->
+      <div class="app-card-container" data-app="tools" data-subprojects="multiple">
+        <div class="app-card-inner">
+          <!-- Front -->
+          <div class="app-card app-card-front" data-app="tools">
+            <div class="app-icon">🛠️</div>
+            <h3>Tools</h3>
+            <p>Nyttige verktøy jeg har bygget. File tree visualizer og mer.</p>
+            <div class="app-status">
+              <span class="status-dot"></span>
+              <span>1 prosjekt</span>
+            </div>
+          </div>
+
+          <!-- Back -->
+          <div class="app-card app-card-back" data-app="tools">
+            <h3>Tools</h3>
+            <ul class="subproject-menu">
+              <li>
+                <a href="/tools/">
+                  <strong>File Tree Visualizer</strong>
+                  <span>Interactive codebase structure visualization</span>
+                </a>
+              </li>
+            </ul>
+            <button class="flip-back">← Tilbake</button>
+          </div>
+        </div>
+      </div>
 
       <!-- Creative -->
       <div class="app-card coming-soon" data-app="creative">
@@ -53,16 +99,35 @@
         </div>
       </div>
 
-      <!-- Lab -->
-      <a href="/lab" class="app-card" data-app="lab">
-        <div class="app-icon">🧪</div>
-        <h3>Lab</h3>
-        <p>Eksperimenter og læringsprosjekter. API-utforsking og prototyper.</p>
-        <div class="app-status">
-          <span class="status-dot"></span>
-          <span>Aktiv</span>
+      <!-- Lab - Single project, flip interaction -->
+      <div class="app-card-container" data-app="lab" data-subprojects="multiple">
+        <div class="app-card-inner">
+          <!-- Front -->
+          <div class="app-card app-card-front" data-app="lab">
+            <div class="app-icon">🧪</div>
+            <h3>Lab</h3>
+            <p>Eksperimenter og læringsprosjekter. API-utforsking og prototyper.</p>
+            <div class="app-status">
+              <span class="status-dot"></span>
+              <span>1 prosjekt</span>
+            </div>
+          </div>
+
+          <!-- Back -->
+          <div class="app-card app-card-back" data-app="lab">
+            <h3>Lab</h3>
+            <ul class="subproject-menu">
+              <li>
+                <a href="/lab/">
+                  <strong>Pasientjournal</strong>
+                  <span>Tooltip, API og AI integrasjonstest</span>
+                </a>
+              </li>
+            </ul>
+            <button class="flip-back">← Tilbake</button>
+          </div>
         </div>
-      </a>
+      </div>
     </div>
   </main>
 

@@ -7,22 +7,29 @@
    CSS Custom Properties (Tokens)
    ================================ */
 :root {
-  /* Colors - Neutral */
-  --color-black: #0a0a0a;
-  --color-white: #ffffff;
-  --color-gray-100: #f9fafb;
-  --color-gray-200: #e5e5e5;
-  --color-gray-300: #d1d5db;
-  --color-gray-400: #9ca3af;
-  --color-gray-500: #666666;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #374151;
-  --color-gray-800: #1f2937;
-  --color-gray-900: #111827;
+  /* Dark Mode Color System */
+  --color-bg-base: #1a1a1a;
+  --color-bg-elevated: #242424;
+  --color-text-primary: #e8e8e8;
+  --color-text-secondary: #a0a0a0;
+  --color-border-subtle: #2f2f2f;
+
+  /* Legacy color names (for compatibility) */
+  --color-black: #e8e8e8;  /* Now maps to light text */
+  --color-white: #1a1a1a;  /* Now maps to dark bg */
+  --color-gray-100: #242424;
+  --color-gray-200: #2f2f2f;
+  --color-gray-300: #3a3a3a;
+  --color-gray-400: #666666;
+  --color-gray-500: #a0a0a0;
+  --color-gray-600: #b0b0b0;
+  --color-gray-700: #c0c0c0;
+  --color-gray-800: #d0d0d0;
+  --color-gray-900: #e8e8e8;
 
   /* Colors - Brand */
-  --color-accent: #dc2626;
-  --color-accent-hover: #b91c1c;
+  --color-accent: #9b8bb8;
+  --color-accent-hover: #b5a5cf;
 
   /* Typography */
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
@@ -86,22 +93,21 @@ body {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
   line-height: 1.6;
-  color: var(--color-black);
-  background: var(--color-white);
+  color: var(--color-text-primary);
+  background: var(--color-bg-base);
 }
 
 /* ================================
    Site Header
    ================================ */
 .site-header {
-  background: var(--color-gray-100);
-  border-bottom: 1px solid var(--color-gray-200);
+  background: var(--color-bg-elevated);
+  border-bottom: 1px solid var(--color-border-subtle);
   padding: var(--spacing-md) var(--spacing-xl);
   position: sticky;
   top: 0;
   z-index: 100;
   backdrop-filter: blur(10px);
-  background: rgba(249, 250, 251, 0.95);
 }
 
 .site-header nav {
@@ -112,7 +118,7 @@ body {
 }
 
 .back-link {
-  color: var(--color-gray-500);
+  color: var(--color-text-secondary);
   text-decoration: none;
   font-size: var(--font-size-sm);
   transition: color var(--transition-base);
@@ -126,15 +132,15 @@ body {
    Site Footer
    ================================ */
 .site-footer {
-  background: var(--color-gray-100);
-  border-top: 1px solid var(--color-gray-200);
+  background: var(--color-bg-elevated);
+  border-top: 1px solid var(--color-border-subtle);
   padding: var(--spacing-xl);
   text-align: center;
   margin-top: var(--spacing-3xl);
 }
 
 .site-footer p {
-  color: var(--color-gray-500);
+  color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
   margin: 0;
 }

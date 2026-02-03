@@ -10,22 +10,65 @@ window.tooltipManager = new TooltipManager();
 const chatMessages = document.getElementById('chat-messages');
 const chatInput = document.getElementById('chat-input');
 const sendBtn = document.getElementById('send-btn');
-const patientSelect = document.getElementById('patient-select');
 const documentsList = document.getElementById('documents-list');
 const viewerContent = document.getElementById('viewer-content');
+
+// Mockup patient data using Kari Hansen's information
+const mockupDocuments = [
+  {
+    id: 'doc-001',
+    description: 'Epikrise etter innleggelse for pneumoni',
+    date: '2025-11-15T14:30:00Z',
+    type: {
+      coding: [{
+        display: 'Epikrise'
+      }]
+    }
+  },
+  {
+    id: 'doc-002',
+    description: 'Blodprøver - årlig kontroll',
+    date: '2025-12-02T09:15:00Z',
+    type: {
+      coding: [{
+        display: 'Laboratoriesvar'
+      }]
+    }
+  },
+  {
+    id: 'doc-007',
+    description: 'Kontrolltime - oppfølging etter pneumoni',
+    date: '2026-01-15T13:20:00Z',
+    type: {
+      coding: [{
+        display: 'Journalnotat'
+      }]
+    }
+  }
+];
 
 // State
 let conversationHistory = [];
 let welcomeVisible = true;
 let selectedPatient = null;
 let selectedPatientName = '';
-let fhirData = { patients: [], documents: [] };
+let fhirData = {
+  patients: [
+    {
+      id: 'patient-001',
+      name: 'Kari Marie Hansen',
+      birthDate: '1978-05-13'
+    }
+  ],
+  documents: []
+};
 let currentDocuments = [];
+let allDocuments = mockupDocuments;
 
-// Sample rich document data (will be replaced with real data later)
+// Sample rich document data for Kari Hansen
 const sampleRichContent = {
   'doc-001': {
-    summary: 'Pasienten ble innlagt akutt med symptomer på pneumoni. Behandlet med antibiotika og oksygentilskudd. Utskrevet etter 5 dager med bedring.',
+    summary: 'Kari Hansen (67 år) ble innlagt akutt med symptomer på pneumoni. Behandlet med antibiotika og oksygentilskudd. Utskrevet etter 5 dager med bedring.',
     keyVariables: {
       'Diagnose': 'Pneumoni (J18.9)',
       'Behandling': 'Amoxicillin 500mg x3',
@@ -35,7 +78,7 @@ const sampleRichContent = {
     sections: [
       {
         title: 'Innkomst',
-        content: 'Pasienten kom inn til akuttmottaket med feber, hoste og tungpustethet. Undersøkt av <practitioner id="pract-001">Dr. Anders Johannesen</practitioner> som mistenkte <health type="diagnosis" code="J18.9">pneumoni</health>.'
+        content: 'Kari Hansen kom inn til akuttmottaket med feber, hoste og tungpustethet. Undersøkt av <practitioner id="pract-001">Dr. Anders Johannesen</practitioner> som mistenkte <health type="diagnosis" code="J18.9">pneumoni</health>.'
       },
       {
         title: 'Behandling',
@@ -58,33 +101,92 @@ const sampleRichContent = {
         email: 'anders.johannesen@ous-hf.no'
       }
     ]
+  },
+  'doc-002': {
+    summary: 'Blodprøver - årlig kontroll for Kari Hansen.',
+    keyVariables: {
+      'Dato': '2. des 2025',
+      'Type': 'Laboratoriesvar',
+      'Resultat': 'Normalt'
+    },
+    sections: [
+      {
+        title: 'Hematologi',
+        content: 'Hemoglobin: 13.8 g/dL (normalt). Leukocytter: 6.2 x10^9/L (normalt). Trombocytter: 245 x10^9/L (normalt).'
+      },
+      {
+        title: 'Klinisk kjemi',
+        content: 'Kreatinin: 78 µmol/L (normalt). ALAT: 22 U/L (normalt). CRP: <5 mg/L (normalt).'
+      },
+      {
+        title: 'Konklusjon',
+        content: 'Alle verdier innenfor normalområdet. Ingen tegn til betennelse eller organsvikt.'
+      }
+    ],
+    practitioners: [
+      {
+        id: 'pract-001',
+        name: 'Dr. Anders Johannesen',
+        role: 'Behandlende lege',
+        profession: 'Spesialist i indremedisin',
+        hospital: 'Oslo Universitetssykehus',
+        department: 'Lungemedisinsk avdeling',
+        phone: '+47 23 07 00 00',
+        email: 'anders.johannesen@ous-hf.no'
+      }
+    ]
+  },
+  'doc-007': {
+    summary: 'Oppfølging etter pneumoni. Kari Hansen møtte til kontroll. Bedring i symptomer, lungefunksjon normalisert.',
+    keyVariables: {
+      'Dato': '22. nov 2025',
+      'Tilstand': 'God bedring',
+      'Videre plan': 'Ingen oppfølging nødvendig'
+    },
+    sections: [
+      {
+        title: 'Anamnese',
+        content: 'Kari rapporterer god bedring siden utskrivelsen. Hoste er betydelig redusert, ingen feber. Daglige aktiviteter gjenopptatt.'
+      },
+      {
+        title: 'Undersøkelse',
+        content: 'Auskultasjon av lunger viser normale respirasjonslyder. Ingen tegn til residiverende infeksjon. Saturasjon 98% på romluft.'
+      },
+      {
+        title: 'Vurdering',
+        content: 'Pneumonien er helbredet. Ingen tegn til komplikasjoner. Pasienten kan gjenoppta normal aktivitet.'
+      }
+    ],
+    practitioners: [
+      {
+        id: 'pract-001',
+        name: 'Dr. Anders Johannesen',
+        role: 'Behandlende lege',
+        profession: 'Spesialist i indremedisin',
+        hospital: 'Oslo Universitetssykehus',
+        department: 'Lungemedisinsk avdeling',
+        phone: '+47 23 07 00 00',
+        email: 'anders.johannesen@ous-hf.no'
+      }
+    ]
   }
 };
 
-// Load initial data
+// Load initial data - using mockup data
 export async function loadData() {
-  try {
-    // Load static synthetic data
-    const fhirResponse = await fetch('/api/fhir/summary');
-    const fhirSummary = await fhirResponse.json();
+  // Patient data is already initialized in fhirData
+  // Automatically load documents for Kari Hansen
+  currentDocuments = mockupDocuments;
 
-    // Load generated data
-    const generatedPatientsRes = await fetch('/api/generated/Patient');
-    const generatedPatients = await generatedPatientsRes.json();
-
-    // Combine static and generated
-    fhirData.patients = [
-      ...fhirSummary.patients,
-      ...(generatedPatients.entry || []).map(e => ({
-        id: e.resource.id,
-        name: e.resource.name[0].given.join(' ') + ' ' + e.resource.name[0].family,
-        birthDate: e.resource.birthDate
-      }))
-    ];
-
-    renderPatients();
-  } catch (error) {
-    console.error('Failed to load data:', error);
+  // Render documents directly
+  if (documentsList) {
+    documentsList.innerHTML = mockupDocuments.map((d, idx) => `
+      <div class="document-item" onclick="viewDocument(${idx})">
+        <h4>${d.description}</h4>
+        <div class="doc-meta">${new Date(d.date).toLocaleDateString('no-NO')}</div>
+        <span class="doc-type">${d.type.coding[0].display}</span>
+      </div>
+    `).join('');
   }
 }
 
@@ -114,21 +216,9 @@ async function selectPatient(patientId, patientName) {
   selectedPatientName = patientName;
   renderPatients();
 
-  // Load documents for this patient
-  let docs = [];
-
-  // Try static data
-  const staticRes = await fetch(`/api/fhir/DocumentReference?patient=${patientId}`);
-  const staticDocs = await staticRes.json();
-  if (staticDocs.entry) docs.push(...staticDocs.entry.map(e => e.resource));
-
-  // Try generated data
-  const genRes = await fetch(`/api/generated/DocumentReference?patient=${patientId}`);
-  const genDocs = await genRes.json();
-  if (genDocs.entry) docs.push(...genDocs.entry.map(e => e.resource));
-
-  currentDocuments = docs;
-  renderDocuments(docs);
+  // Use documents from loaded data
+  currentDocuments = allDocuments;
+  renderDocuments(allDocuments);
 }
 
 function renderDocuments(docs) {
@@ -181,42 +271,42 @@ window.viewDocument = function(docIndex) {
   const richData = sampleRichContent[doc.id];
 
   if (richData) {
-    // Render rich document
+    // Render rich document with dark mode colors
     const sectionsHTML = richData.sections.map(section => `
       <div style="margin-bottom: 1.5rem;">
-        <h3 style="color: #333; font-size: 1rem; margin-bottom: 0.5rem;">${section.title}</h3>
-        <p style="line-height: 1.6; color: #555;">${processClickableContent(section.content)}</p>
+        <h3 style="color: #e8e8e8; font-size: 1rem; margin-bottom: 0.5rem;">${section.title}</h3>
+        <p style="line-height: 1.6; color: #e8e8e8;">${processClickableContent(section.content)}</p>
       </div>
     `).join('');
 
     const keyVarsHTML = Object.entries(richData.keyVariables).map(([key, value]) =>
-      `<div style="margin-bottom: 0.5rem;"><strong>${key}:</strong> ${value}</div>`
+      `<div style="margin-bottom: 0.5rem; color: #e8e8e8;"><strong>${key}:</strong> ${value}</div>`
     ).join('');
 
     viewerContent.innerHTML = `
       <div class="viewer-content">
-        <h2 style="color: #dc2626; margin-bottom: 1rem;">${doc.description}</h2>
-        <div style="font-size: 0.875rem; color: #666; margin-bottom: 1.5rem;">
+        <h2 style="color: #c9a08b; margin-bottom: 1rem;">${doc.description}</h2>
+        <div style="font-size: 0.875rem; color: #a0a0a0; margin-bottom: 1.5rem;">
           <strong>Type:</strong> ${doc.type.coding[0].display}<br>
           <strong>Dato:</strong> ${new Date(doc.date).toLocaleDateString('no-NO', { year: 'numeric', month: 'long', day: 'numeric' })}<br>
-          <strong>Pasient:</strong> ${selectedPatientName}
+          <strong>Pasient:</strong> Kari Marie Hansen
         </div>
 
-        <div style="background: #fef3c7; padding: 1rem; border-radius: 6px; margin-bottom: 1.5rem; font-size: 0.875rem;">
-          <strong style="display: block; margin-bottom: 0.5rem;">Nøkkelinformasjon</strong>
+        <div style="background: rgba(201, 160, 139, 0.15); padding: 1rem; border-radius: 6px; margin-bottom: 1.5rem; font-size: 0.875rem; border: 1px solid rgba(201, 160, 139, 0.3);">
+          <strong style="display: block; margin-bottom: 0.5rem; color: #c9a08b;">Nøkkelinformasjon</strong>
           ${keyVarsHTML}
         </div>
 
-        <div style="background: #f9fafb; padding: 1.5rem; border-radius: 6px; border-left: 3px solid #dc2626;">
-          <strong style="display: block; margin-bottom: 1rem; color: #333;">Sammendrag</strong>
-          <p style="margin-bottom: 1.5rem; line-height: 1.6; color: #555;">${richData.summary}</p>
+        <div style="background: #2a2a2a; padding: 1.5rem; border-radius: 6px; border-left: 3px solid #c9a08b;">
+          <strong style="display: block; margin-bottom: 1rem; color: #e8e8e8;">Sammendrag</strong>
+          <p style="margin-bottom: 1.5rem; line-height: 1.6; color: #e8e8e8;">${richData.summary}</p>
 
-          <strong style="display: block; margin-bottom: 1rem; color: #333;">Detaljer</strong>
+          <strong style="display: block; margin-bottom: 1rem; color: #e8e8e8;">Detaljer</strong>
           ${sectionsHTML}
         </div>
 
         <button onclick="askAboutDocument('${doc.description.replace(/'/g, "\\'")}')"
-                style="margin-top: 1.5rem; background: #dc2626; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer;">
+                style="margin-top: 1.5rem; background: #c9a08b; color: #1a1a1a; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-weight: 500;">
           Still spørsmål om dokumentet
         </button>
       </div>
@@ -325,6 +415,7 @@ window.showHealthTooltip = function(event, type, code, text) {
 
   window.tooltipManager.create(text, content, { x: event.pageX + 10, y: event.pageY + 10 });
 }
+
 
 window.askAboutDocument = function(description) {
   chatInput.value = `Fortell meg om dokumentet: ${description}`;

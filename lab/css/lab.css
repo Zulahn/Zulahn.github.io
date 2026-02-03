@@ -1,9 +1,22 @@
-/* Pasientjournal Styles */
+/* Pasientjournal Styles - Dark Mode Muted */
 /* Extends global.css - uses custom header/layout (not site-header) */
+
+:root {
+  /* Lab dark mode color system - warm muted palette */
+  --lab-bg-base: #1a1a1a;
+  --lab-bg-elevated: #242424;
+  --lab-bg-panel: #2a2a2a;
+  --lab-text-primary: #e8e8e8;
+  --lab-text-secondary: #a0a0a0;
+  --lab-border: #3a3a3a;
+  --lab-accent: #c9a08b; /* Muted warm tan from main page */
+  --lab-accent-dark: #a8826d;
+}
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-  background: #f5f5f5;
+  background: var(--lab-bg-base);
+  color: var(--lab-text-primary);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -11,12 +24,13 @@ body {
 
 /* Header */
 header {
-  background: #dc2626;
-  color: white;
+  background: var(--lab-bg-elevated);
+  color: var(--lab-text-primary);
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid var(--lab-border);
 }
 
 .header-left {
@@ -26,24 +40,25 @@ header {
 }
 
 .back-link {
-  color: white;
+  color: var(--lab-text-secondary);
   text-decoration: none;
-  opacity: 0.8;
   font-size: 0.9rem;
+  transition: color 0.2s;
 }
 
 .back-link:hover {
-  opacity: 1;
+  color: var(--lab-accent);
 }
 
 header h1 {
   font-size: 1.25rem;
   font-weight: 500;
+  color: var(--lab-text-primary);
 }
 
 .status {
   font-size: 0.875rem;
-  opacity: 0.8;
+  color: var(--lab-text-secondary);
 }
 
 /* Main Layout */
@@ -57,35 +72,76 @@ main {
 
 /* Documents Panel */
 .documents-panel {
-  background: white;
-  border-right: 1px solid #e0e0e0;
+  background: var(--lab-bg-panel);
+  border-right: 1px solid var(--lab-border);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
 }
 
-.patient-selector {
-  padding: 1rem;
-  border-bottom: 1px solid #e0e0e0;
+/* Patient Card */
+.patient-card {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--lab-border);
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
 }
 
-.patient-selector select {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 0.875rem;
+.patient-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--lab-bg-elevated);
+  border: 2px solid var(--lab-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.patient-info {
+  flex: 1;
+}
+
+.patient-info h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--lab-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.patient-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detail-row {
+  display: flex;
+  font-size: 0.8rem;
+}
+
+.detail-label {
+  color: var(--lab-text-secondary);
+  min-width: 85px;
+}
+
+.detail-value {
+  color: var(--lab-text-primary);
+  font-weight: 500;
 }
 
 .documents-header {
   padding: 1rem;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--lab-border);
 }
 
 .documents-header h2 {
   font-size: 0.75rem;
   text-transform: uppercase;
-  color: #666;
+  color: var(--lab-text-secondary);
   letter-spacing: 0.05em;
 }
 
@@ -96,8 +152,8 @@ main {
 }
 
 .document-item {
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: var(--lab-bg-elevated);
+  border: 1px solid var(--lab-border);
   border-radius: 8px;
   padding: 0.75rem;
   margin-bottom: 0.5rem;
@@ -106,24 +162,25 @@ main {
 }
 
 .document-item:hover {
-  border-color: #dc2626;
+  border-color: var(--lab-accent);
+  background: color-mix(in srgb, var(--lab-accent) 8%, var(--lab-bg-elevated));
 }
 
 .document-item h4 {
   font-size: 0.8rem;
-  color: #333;
+  color: var(--lab-text-primary);
   margin-bottom: 0.25rem;
 }
 
 .document-item .doc-meta {
   font-size: 0.7rem;
-  color: #666;
+  color: var(--lab-text-secondary);
 }
 
 .document-item .doc-type {
   display: inline-block;
-  background: #fee2e2;
-  color: #dc2626;
+  background: color-mix(in srgb, var(--lab-accent) 20%, var(--lab-bg-elevated));
+  color: var(--lab-accent);
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
   font-size: 0.65rem;
@@ -132,8 +189,8 @@ main {
 
 /* Document Viewer */
 .document-viewer {
-  background: #fafafa;
-  border-right: 1px solid #e0e0e0;
+  background: var(--lab-bg-base);
+  border-right: 1px solid var(--lab-border);
   overflow-y: auto;
   padding: 2rem;
   display: flex;
@@ -144,15 +201,17 @@ main {
 .viewer-content {
   max-width: 800px;
   width: 100%;
-  background: white;
+  background: var(--lab-bg-elevated);
   border-radius: 8px;
   padding: 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  border: 1px solid var(--lab-border);
+  color: var(--lab-text-primary);
 }
 
 .viewer-empty {
   text-align: center;
-  color: #999;
+  color: var(--lab-text-secondary);
   padding: 4rem 2rem;
 }
 
@@ -161,7 +220,7 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: white;
+  background: var(--lab-bg-panel);
 }
 
 .chat-messages {
@@ -196,20 +255,21 @@ main {
 }
 
 .message.user .message-content {
-  background: #dc2626;
-  color: white;
+  background: var(--lab-accent);
+  color: var(--lab-bg-base);
   border-bottom-right-radius: 4px;
 }
 
 .message.assistant .message-content {
-  background: #f0f0f0;
-  color: #333;
+  background: var(--lab-bg-elevated);
+  color: var(--lab-text-primary);
+  border: 1px solid var(--lab-border);
   border-bottom-left-radius: 4px;
 }
 
 .message-meta {
   font-size: 0.75rem;
-  color: #999;
+  color: var(--lab-text-secondary);
   margin-top: 0.25rem;
   padding: 0 0.5rem;
 }
@@ -220,9 +280,9 @@ main {
 
 /* Chat Input */
 .chat-input-container {
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--lab-border);
   padding: 1rem;
-  background: #fafafa;
+  background: var(--lab-bg-elevated);
 }
 
 .chat-input-wrapper {
@@ -235,20 +295,22 @@ main {
 #chat-input {
   flex: 1;
   padding: 0.75rem 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--lab-border);
   border-radius: 24px;
   font-size: 1rem;
   outline: none;
   transition: border-color 0.2s;
+  background: var(--lab-bg-panel);
+  color: var(--lab-text-primary);
 }
 
 #chat-input:focus {
-  border-color: #dc2626;
+  border-color: var(--lab-accent);
 }
 
 #send-btn {
-  background: #dc2626;
-  color: white;
+  background: var(--lab-accent);
+  color: var(--lab-bg-base);
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 24px;
@@ -258,11 +320,11 @@ main {
 }
 
 #send-btn:hover {
-  background: #b91c1c;
+  background: var(--lab-accent-dark);
 }
 
 #send-btn:disabled {
-  background: #ccc;
+  background: color-mix(in srgb, var(--lab-accent) 40%, var(--lab-bg-base));
   cursor: not-allowed;
 }
 
@@ -270,7 +332,8 @@ main {
 .typing-indicator {
   display: none;
   padding: 0.75rem 1rem;
-  background: #f0f0f0;
+  background: var(--lab-bg-elevated);
+  border: 1px solid var(--lab-border);
   border-radius: 12px;
   width: fit-content;
   margin-bottom: 1rem;
@@ -284,7 +347,7 @@ main {
   display: inline-block;
   width: 8px;
   height: 8px;
-  background: #999;
+  background: var(--lab-accent);
   border-radius: 50%;
   margin-right: 4px;
   animation: bounce 1.4s infinite ease-in-out;
@@ -303,37 +366,38 @@ main {
 .welcome-message {
   text-align: center;
   padding: 3rem;
-  color: #666;
+  color: var(--lab-text-secondary);
 }
 
 .welcome-message h2 {
-  color: #dc2626;
+  color: var(--lab-accent);
   margin-bottom: 0.5rem;
 }
 
 /* Generate Button */
 .generate-btn {
-  background: #dc2626;
-  color: white;
+  background: var(--lab-accent);
+  color: var(--lab-bg-base);
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   font-size: 0.8rem;
   cursor: pointer;
   margin-top: 0.5rem;
+  transition: background 0.2s;
 }
 
 .generate-btn:hover {
-  background: #b91c1c;
+  background: var(--lab-accent-dark);
 }
 
 /* Tooltip System */
 .tooltip {
   position: fixed;
-  background: white;
-  border: 2px solid #e0e0e0;
+  background: var(--lab-bg-elevated);
+  border: 2px solid var(--lab-border);
   border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
   z-index: 1000;
   min-width: 280px;
   max-width: 400px;
@@ -346,24 +410,24 @@ main {
 }
 
 .tooltip.locked {
-  border-color: #dc2626;
-  box-shadow: 0 8px 30px rgba(220, 38, 38, 0.25);
+  border-color: var(--lab-accent);
+  box-shadow: 0 8px 30px rgba(201, 160, 139, 0.3);
 }
 
 .tooltip-header {
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--lab-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fafafa;
+  background: var(--lab-bg-panel);
   border-radius: 6px 6px 0 0;
 }
 
 .tooltip-title {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #333;
+  color: var(--lab-text-primary);
 }
 
 .tooltip-actions {
@@ -376,13 +440,13 @@ main {
   border: none;
   cursor: pointer;
   padding: 0.25rem;
-  color: #666;
+  color: var(--lab-text-secondary);
   font-size: 1.1rem;
   transition: color 0.2s;
 }
 
 .tooltip-btn:hover {
-  color: #dc2626;
+  color: var(--lab-accent);
 }
 
 .tooltip-content {
@@ -391,11 +455,12 @@ main {
   overflow-y: auto;
   font-size: 0.875rem;
   line-height: 1.5;
+  color: var(--lab-text-primary);
 }
 
-/* Clickable Elements */
+/* Clickable Elements - Muted colors for dark mode */
 .clickable-practitioner {
-  color: #2563eb;
+  color: #7ea3e0;
   text-decoration: underline;
   text-decoration-style: solid;
   cursor: pointer;
@@ -403,11 +468,11 @@ main {
 }
 
 .clickable-practitioner:hover {
-  color: #1d4ed8;
+  color: #9bb8e8;
 }
 
 .clickable-health {
-  color: #059669;
+  color: #6dab8f;
   text-decoration: underline;
   text-decoration-style: dotted;
   cursor: pointer;
@@ -415,7 +480,7 @@ main {
 }
 
 .clickable-health:hover {
-  color: #047857;
+  color: #85bfa4;
 }
 
 /* Responsive */

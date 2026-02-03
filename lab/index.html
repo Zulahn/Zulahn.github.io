@@ -19,18 +19,28 @@
   <main>
     <!-- Left: Documents Panel -->
     <aside class="documents-panel">
-      <div class="patient-selector">
-        <select id="patient-select" onchange="selectPatientFromDropdown()">
-          <option value="">Velg pasient...</option>
-        </select>
-        <button class="generate-btn" onclick="generatePatient()">+ Generer</button>
+      <div class="patient-card">
+        <div class="patient-icon">👤</div>
+        <div class="patient-info">
+          <h3>Kari Marie Hansen</h3>
+          <div class="patient-details">
+            <div class="detail-row">
+              <span class="detail-label">Fødselsdato:</span>
+              <span class="detail-value">13.05.1978</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Pasient ID:</span>
+              <span class="detail-value">13057842910</span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="documents-header">
         <h2>Dokumenter</h2>
       </div>
       <div class="document-list">
         <div id="documents-list">
-          <p style="font-size: 0.8rem; color: #999; padding: 1rem;">Velg en pasient</p>
+          <!-- Documents will be loaded here -->
         </div>
       </div>
     </aside>
@@ -50,8 +60,7 @@
       <div class="chat-messages" id="chat-messages">
         <div class="welcome-message">
           <h2>Pasientjournal</h2>
-          <p>Spør om helsedata, journaldokumenter eller generer syntetiske pasienter.</p>
-          <p style="margin-top: 0.5rem; font-size: 0.875rem;">Prøv: "Vis alle epikriser" eller "Hvilke dokumenter har Kari Hansen?"</p>
+          <p>Test of public health APIs, Anthropic chat agent integration and a variety of functions such as tooltips.</p>
         </div>
       </div>
 
