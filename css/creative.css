@@ -1,0 +1,45 @@
+/**
+ * Creative Section Styles
+ * Shared across all creative pages (Billedkunst, Fotografi, Musikk)
+ * Import AFTER global.css
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Actor&display=swap');
+
+:root {
+  --creative-font: 'Actor', sans-serif;
+  --creative-bg: #F6EBC1;
+  --creative-text: #3a3026;
+  --creative-text-secondary: #6b5d4f;
+  --creative-heading: #67550F;
+  --creative-accent: #8b7a2e;
+}
+
+body {
+  font-family: var(--creative-font);
+  background: var(--creative-bg);
+  color: var(--creative-text);
+}
+
+.site-header {
+  background: var(--creative-bg);
+  border-bottom-color: var(--creative-bg);
+}
+
+.site-header .back-link,
+.site-header .social-links a {
+  color: var(--creative-text-secondary);
+}
+
+.site-header .back-link:hover,
+.site-header .social-links a:hover {
+  color: var(--creative-text);
+}
+
+.site-footer {
+  background: var(--creative-bg);
+  border-top-color: var(--creative-bg);
+}
+
+.site-footer p { color: var(--creative-text-secondary); }
+.site-footer a { color: var(--creative-text); }

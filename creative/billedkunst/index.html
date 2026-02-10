@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billedkunst | Åsmund Dæhlen</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <style>
+    main {
+      max-width: var(--max-width-content);
+      margin: 0 auto;
+      padding: var(--spacing-3xl) var(--spacing-xl);
+    }
+
+    h1 {
+      font-size: var(--font-size-3xl);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .intro {
+      color: var(--color-text-secondary);
+      font-size: var(--font-size-lg);
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .placeholder {
+      background: var(--color-bg-elevated);
+      border: 1px dashed var(--color-border-subtle);
+      border-radius: var(--border-radius-lg);
+      padding: var(--spacing-3xl);
+      text-align: center;
+      color: var(--color-text-secondary);
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav>
+      <a href="/" class="back-link">← Hjem</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Billedkunst</h1>
+    <p class="intro">Malerier, tegninger og digitale arbeider</p>
+
+    <div class="categories">
+      <a href="malerier/" class="category-link">
+        <strong>Malerier</strong>
+        <span>85 bilder</span>
+      </a>
+      <a href="tresnitt/" class="category-link">
+        <strong>Tresnitt</strong>
+        <span>35 bilder</span>
+      </a>
+    </div>
+
+    <style>
+      .categories {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+      }
+
+      .category-link {
+        display: block;
+        background: var(--color-bg-elevated);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--border-radius-lg);
+        padding: var(--spacing-lg);
+        text-decoration: none;
+        transition: border-color var(--transition-base);
+      }
+
+      .category-link:hover {
+        border-color: var(--color-accent);
+      }
+
+      .category-link strong {
+        display: block;
+        color: var(--color-text-primary);
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-xs);
+      }
+
+      .category-link span {
+        color: var(--color-text-secondary);
+        font-size: var(--font-size-sm);
+      }
+    </style>
+  </main>
+
+  <footer class="site-footer">
+    <p>Åsmund Dæhlen | <a href="mailto:daehlen1@gmail.com">daehlen1@gmail.com</a></p>
+  </footer>
+</body>
+</html>

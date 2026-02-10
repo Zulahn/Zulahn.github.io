@@ -88,14 +88,71 @@
         </div>
       </div>
 
-      <!-- Creative -->
-      <div class="app-card coming-soon" data-app="creative">
-        <div class="app-icon">🎨</div>
-        <h3>Creative</h3>
-        <p>Musikk, kunst og kreative prosjekter utenfor jobb.</p>
-        <div class="app-status">
-          <span class="status-dot inactive"></span>
-          <span>Kommer snart</span>
+      <!-- Creative - Multiple projects, flip interaction -->
+      <div class="app-card-container" data-app="creative" data-subprojects="multiple">
+        <div class="app-card-inner">
+          <!-- Front -->
+          <div class="app-card app-card-front" data-app="creative">
+            <div class="app-icon">🎨</div>
+            <h3>Creative</h3>
+            <p>Musikk, kunst og kreative prosjekter utenfor jobb.</p>
+            <div class="app-status">
+              <span class="status-dot"></span>
+              <span>3 prosjekter</span>
+            </div>
+          </div>
+
+          <!-- Back -->
+          <div class="app-card app-card-back" data-app="creative">
+            <h3>Creative</h3>
+            <ul class="subproject-menu">
+              <li>
+                <a href="/creative/fotografi/" data-has-subcategories data-subcategory="fotografi">
+                  <strong>Fotografi</strong>
+                  <span>Bilder fra reiser og hverdagen</span>
+                </a>
+              </li>
+              <li>
+                <a href="/creative/billedkunst/" data-has-subcategories data-subcategory="billedkunst">
+                  <strong>Billedkunst</strong>
+                  <span>Malerier, tegninger og digitale arbeider</span>
+                </a>
+              </li>
+              <li>
+                <a href="/creative/musikk/" data-has-subcategories data-subcategory="musikk">
+                  <strong>Musikk</strong>
+                  <span>Komposisjoner og lydeksperimenter</span>
+                </a>
+              </li>
+            </ul>
+
+            <div class="subcategory-menu" data-subcategory-id="fotografi" hidden>
+              <button class="subcategory-back">← Creative</button>
+              <h3>Fotografi</h3>
+              <ul>
+                <li><a href="/creative/fotografi/"><strong>Kommer snart</strong></a></li>
+              </ul>
+            </div>
+
+            <div class="subcategory-menu" data-subcategory-id="billedkunst" hidden>
+              <button class="subcategory-back">← Creative</button>
+              <h3>Billedkunst</h3>
+              <ul>
+                <li><a href="/creative/billedkunst/malerier/"><strong>Malerier</strong><span>85 bilder</span></a></li>
+                <li><a href="/creative/billedkunst/tresnitt/"><strong>Tresnitt</strong><span>35 bilder</span></a></li>
+              </ul>
+            </div>
+
+            <div class="subcategory-menu" data-subcategory-id="musikk" hidden>
+              <button class="subcategory-back">← Creative</button>
+              <h3>Musikk</h3>
+              <ul>
+                <li><a href="/creative/musikk/"><strong>Kommer snart</strong></a></li>
+              </ul>
+            </div>
+
+            <button class="flip-back">← Tilbake</button>
+          </div>
         </div>
       </div>
 

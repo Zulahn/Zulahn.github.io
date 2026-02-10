@@ -1,5 +1,6 @@
 // Card Flip Interaction for Multi-Project Cards
 // Handles flipping cards to show sub-project menus
+// Supports nested subcategory drill-down
 
 export class CardFlip {
   constructor(containerSelector) {
@@ -9,7 +10,6 @@ export class CardFlip {
 
   init() {
     this.containers.forEach(container => {
-      // Only initialize if card has multiple sub-projects
       if (container.dataset.subprojects === 'multiple') {
         this.setupFlip(container);
       }
@@ -29,16 +29,44 @@ export class CardFlip {
     }
 
     if (backCard) {
+      // Handle subcategory links
+      backCard.querySelectorAll('[data-has-subcategories]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const subcategoryId = link.dataset.subcategory;
+          const subcategoryMenu = backCard.querySelector(`.subcategory-menu[data-subcategory-id="${subcategoryId}"]`);
+          if (subcategoryMenu) {
+            this.showSubcategories(backCard, subcategoryMenu);
+          }
+        });
+      });
+
+      // Handle subcategory back buttons
+      backCard.querySelectorAll('.subcategory-back').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.hideSubcategories(backCard);
+        });
+      });
+
       backCard.addEventListener('click', (e) => {
         // Don't flip back if clicking on a link (let it navigate)
-        const clickedLink = e.target.closest('.subproject-menu a');
-        if (clickedLink) {
-          return; // Allow link navigation
-        }
+        const clickedLink = e.target.closest('.subproject-menu a:not([data-has-subcategories])');
+        if (clickedLink) return;
 
-        // Flip back for any other click on the back card
+        const clickedSubLink = e.target.closest('.subcategory-menu a');
+        if (clickedSubLink) return;
+
+        // Don't flip back if clicking subcategory-related elements
+        if (e.target.closest('[data-has-subcategories]')) return;
+        if (e.target.closest('.subcategory-menu')) return;
+        if (e.target.closest('.subcategory-back')) return;
+
         e.preventDefault();
         e.stopPropagation();
+        this.hideSubcategories(backCard);
         this.unflip(container);
       });
     }
@@ -46,6 +74,7 @@ export class CardFlip {
     if (backButton) {
       backButton.addEventListener('click', (e) => {
         e.stopPropagation();
+        this.hideSubcategories(backCard);
         this.unflip(container);
       });
     }
@@ -57,6 +86,34 @@ export class CardFlip {
 
   unflip(container) {
     container.classList.remove('flipped');
+  }
+
+  showSubcategories(backCard, subcategoryMenu) {
+    // Hide main menu
+    const mainMenu = backCard.querySelector('.subproject-menu');
+    const mainTitle = backCard.querySelector(':scope > h3');
+    const flipBack = backCard.querySelector('.flip-back');
+    if (mainMenu) mainMenu.hidden = true;
+    if (mainTitle) mainTitle.hidden = true;
+    if (flipBack) flipBack.hidden = true;
+
+    // Show subcategory menu
+    subcategoryMenu.hidden = false;
+  }
+
+  hideSubcategories(backCard) {
+    // Hide all subcategory menus
+    backCard.querySelectorAll('.subcategory-menu').forEach(menu => {
+      menu.hidden = true;
+    });
+
+    // Show main menu
+    const mainMenu = backCard.querySelector('.subproject-menu');
+    const mainTitle = backCard.querySelector(':scope > h3');
+    const flipBack = backCard.querySelector('.flip-back');
+    if (mainMenu) mainMenu.hidden = false;
+    if (mainTitle) mainTitle.hidden = false;
+    if (flipBack) flipBack.hidden = false;
   }
 }
 
