@@ -14,11 +14,7 @@
 
     h1 { color: var(--creative-heading); }
 
-    .intro {
-      color: var(--creative-accent);
-      padding-left: 8px;
-    }
-
+    .intro,
     .image-count {
       color: var(--creative-accent);
       padding-left: 8px;
@@ -36,16 +32,68 @@
       padding-left: 8px;
     }
 
-    .gallery {
+    /* W3Schools Responsive Image Grid */
+    .row {
       display: flex;
-      flex-direction: column;
-      gap: 16px;
-      padding: 0 8px;
+      flex-wrap: wrap;
+      padding: 0 4px;
     }
 
-    .gallery img {
-      width: 100%;
+    .column {
+      flex: 25%;
+      max-width: 25%;
+      padding: 0 4px;
+    }
+
+    .column img {
+      margin-top: 8px;
       vertical-align: middle;
+      width: 100%;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .column img:hover {
+      opacity: 0.85;
+    }
+
+    @media screen and (max-width: 800px) {
+      .column {
+        flex: 50%;
+        max-width: 50%;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .column {
+        flex: 100%;
+        max-width: 100%;
+      }
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 95%;
+      max-height: 95vh;
+      object-fit: contain;
     }
   </style>
 </head>
@@ -61,17 +109,49 @@
     <p class="intro">Fotografi fra journalistisk arbeid</p>
     <p class="image-count">8 bilder</p>
 
-    <div class="gallery">
+    <div class="row">
+      <div class="column">
         <img src="Screenshot%202025-10-30%20110016.webp" alt="Journalistfotografi" loading="lazy">
-        <img src="Screenshot%202025-10-30%20110136.webp" alt="Journalistfotografi" loading="lazy">
-        <img src="Screenshot%202025-10-30%20110202.webp" alt="Journalistfotografi" loading="lazy">
-        <img src="Screenshot%202025-10-30%20114622.webp" alt="Journalistfotografi" loading="lazy">
         <img src="Screenshot%202025-10-30%20114652.webp" alt="Journalistfotografi" loading="lazy">
+      </div>
+      <div class="column">
+        <img src="Screenshot%202025-10-30%20110136.webp" alt="Journalistfotografi" loading="lazy">
         <img src="Screenshot%202025-10-30%20114700.webp" alt="Journalistfotografi" loading="lazy">
+      </div>
+      <div class="column">
+        <img src="Screenshot%202025-10-30%20110202.webp" alt="Journalistfotografi" loading="lazy">
         <img src="Screenshot%202025-10-30%20114819.webp" alt="Journalistfotografi" loading="lazy">
+      </div>
+      <div class="column">
+        <img src="Screenshot%202025-10-30%20114622.webp" alt="Journalistfotografi" loading="lazy">
         <img src="Screenshot%202025-10-30%20114909.webp" alt="Journalistfotografi" loading="lazy">
+      </div>
     </div>
   </main>
+
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="Forstørret bilde" id="lightbox-img">
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    document.querySelectorAll('.row img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+    });
+  </script>
 
   <footer class="site-footer">
     <p>Åsmund Dæhlen | <a href="mailto:daehlen1@gmail.com">daehlen1@gmail.com</a></p>
