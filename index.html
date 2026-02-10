@@ -22,37 +22,47 @@
     </p>
 
     <div class="apps-grid">
-      <!-- Academic - Multiple projects, flip interaction -->
-      <div class="app-card-container" data-app="academic" data-subprojects="multiple">
+      <!-- Jobb - Multiple projects, flip interaction -->
+      <div class="app-card-container" data-app="jobb" data-subprojects="multiple">
         <div class="app-card-inner">
           <!-- Front -->
-          <div class="app-card app-card-front" data-app="academic">
-            <div class="app-icon">📚</div>
-            <h3>Akademisk</h3>
-            <p>Casestudier fra tjenestedesign, forskning og brukersentrert utvikling.</p>
+          <div class="app-card app-card-front" data-app="jobb">
+            <div class="app-icon">💼</div>
+            <h3>Jobb</h3>
+            <p>Journalistisk arbeid, casestudier fra tjenestedesign og forskning.</p>
             <div class="app-status">
               <span class="status-dot"></span>
-              <span>2 prosjekter</span>
+              <span>3 prosjekter</span>
             </div>
           </div>
 
           <!-- Back -->
-          <div class="app-card app-card-back" data-app="academic">
-            <h3>Akademisk</h3>
+          <div class="app-card app-card-back" data-app="jobb">
+            <h3>Jobb</h3>
             <ul class="subproject-menu">
               <li>
-                <a href="/academic/masteroppgave.html">
-                  <strong>Masteroppgave</strong>
-                  <span>Deltakende design og capability-tilnærming (2019)</span>
+                <a href="/academic/journalist/">
+                  <strong>Journalist</strong>
+                  <span>Fotografi fra journalistisk arbeid</span>
                 </a>
               </li>
               <li>
-                <a href="/academic/Stipendatur.html">
-                  <strong>Stipendiatforskning</strong>
-                  <span>Helsearbeidere som leder digital transformasjon (2020–2022)</span>
+                <a href="/academic/" data-has-subcategories data-subcategory="akademisk">
+                  <strong>Akademisk</strong>
+                  <span>Casestudier fra tjenestedesign og forskning</span>
                 </a>
               </li>
             </ul>
+
+            <div class="subcategory-menu" data-subcategory-id="akademisk" hidden>
+              <button class="subcategory-back">← Jobb</button>
+              <h3>Akademisk</h3>
+              <ul>
+                <li><a href="/academic/masteroppgave.html"><strong>Masteroppgave</strong><span>Deltakende design og capability-tilnærming (2019)</span></a></li>
+                <li><a href="/academic/Stipendatur.html"><strong>Stipendiatforskning</strong><span>Helsearbeidere som leder digital transformasjon (2020–2022)</span></a></li>
+              </ul>
+            </div>
+
             <button class="flip-back">← Tilbake</button>
           </div>
         </div>
@@ -107,7 +117,7 @@
             <h3>Kreativt</h3>
             <ul class="subproject-menu">
               <li>
-                <a href="/creative/fotografi/" data-has-subcategories data-subcategory="fotografi">
+                <a href="/creative/fotografi/">
                   <strong>Fotografi</strong>
                   <span>Bilder fra reiser og hverdagen</span>
                 </a>
@@ -126,20 +136,13 @@
               </li>
             </ul>
 
-            <div class="subcategory-menu" data-subcategory-id="fotografi" hidden>
-              <button class="subcategory-back">← Kreativt</button>
-              <h3>Fotografi</h3>
-              <ul>
-                <li><a href="/creative/fotografi/"><strong>Kommer snart</strong></a></li>
-              </ul>
-            </div>
-
             <div class="subcategory-menu" data-subcategory-id="billedkunst" hidden>
               <button class="subcategory-back">← Kreativt</button>
               <h3>Billedkunst</h3>
               <ul>
                 <li><a href="/creative/billedkunst/malerier/"><strong>Malerier</strong><span>85 bilder</span></a></li>
                 <li><a href="/creative/billedkunst/tresnitt/"><strong>Tresnitt</strong><span>35 bilder</span></a></li>
+                <li><a href="/creative/billedkunst/prosessen/"><strong>Prosessen</strong><span>51 bilder</span></a></li>
               </ul>
             </div>
 

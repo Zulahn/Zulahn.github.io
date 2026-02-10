@@ -18,6 +18,7 @@
 
   /* Section Colors - Muted, adjusted for dark mode */
   --academic-color: #9b8bb8;
+  --jobb-color: #9b8bb8;
   --tools-color: #7fa490;
   --creative-color: #d4a5a3;
   --lab-color: #c9a08b;
@@ -221,6 +222,10 @@ main {
 /* Section-specific colors - Cohesive, Desaturated Palette */
 .app-card[data-app="academic"] {
   --accent-color: var(--academic-color);
+}
+
+.app-card[data-app="jobb"] {
+  --accent-color: var(--jobb-color);
 }
 
 .app-card[data-app="tools"] {
